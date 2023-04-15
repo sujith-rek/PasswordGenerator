@@ -46,3 +46,22 @@ incase the python script doesn't run, run the following command
 ```
 chmod +x *.py
 ```
+
+File Descriptions
+------------------
+- execute.sh: This file contains all the commands that need to be run to generate the passwords and crack them using hashcat
+- rules.rules: This file contains the rules that can be used in straight mode of hashcat
+- /programs: This folder contains all the programs that are used to generate the passwords, wordlists
+    - wordlist.py: This file contains the code to generate the wordlist from linux wordlists
+    - password.py: This program generates 10000 raw passwords
+    - generate_passwords.py: This program takes the raw passwords and generates the final passwords
+    - check.py: This program outputs the success rate of the hashes cracked by hashcat
+    - hybrid_wordlist.py: This program generates the hybrid wordlist which follows the rules of the passwords generated
+- /hashes: This folder contains all the hashes generated
+    - hash.txt: This file contains the hashes of the passwords generated
+    - dictionary.txt: This file contains passwords and hashes stored as key value pairs
+- /outputFiles: Thisfolder contain files which will store cracked password which are generated with hashcat
+- /wordlist: This folder contains wordlists which will be used for password generation and cracking
+    - wordlist.txt: This file contains the wordlist which will be used for password generation
+    - common_wordlist.txt: This file contains the wordlist which will be used for generating passwords
+    - hybrid_wordlist.txt: This file contains the wordlist which will be used for cracking the hashes
