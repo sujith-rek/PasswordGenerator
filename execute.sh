@@ -8,6 +8,9 @@
 # 7 - Hybrid Mask + Wordlist
 # 9 - Association
 
+# mkdir hashes
+# mkdir passwords
+
 # Execute the program password.py
 python ./programs/password.py
 
@@ -22,7 +25,7 @@ hashcat -m 100 -a 0 ./hashes/hash.txt ./wordlist/wordlist.txt -o ./outputFiles/s
 # with normal wordlist and mask
 hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/wordlist.txt ./wordlist/mask.txt -o ./outputFiles/combination_output.txt
 # with hybrid wordlist + mask
-# hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/hybrid_wordlist.txt ./wordlist/mask.txt -o ./outputFiles/combination_output.txt
+hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/hybrid_wordlist.txt ./wordlist/mask.txt -o ./outputFiles/combination_output_hybrid.txt
 
 
 # execute hashcat with brute force attack 
@@ -35,9 +38,14 @@ hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/wordlist.txt ./wordlist/mask.tx
 
 # Execute hashcat with hybrid wordlist + mask attack
 hashcat -m 100 -a 6 ./hashes/hash.txt ./wordlist/wordlist.txt ?a?a -o ./outputFiles/hybrid_wordlist_mask_output.txt
+# Execute hashcat with hybrid_wordlist + mask attack
+hashcat -m 100 -a 6 ./hashes/hash.txt ./wordlist/hybrid_wordlist.txt ?a?a -o ./outputFiles/hybrid_wordlist_mask_output_hybrid.txt
+
 
 # Execute hashcat with hybrid mask + wordlist attack
 hashcat -m 100 -a 7 ./hashes/hash.txt ?a?a ./wordlist/wordlist.txt -o ./outputFiles/hybrid_mask_wordlist_output.txt
+# Execute hashcat with hybrid mask + wordlist attack
+hashcat -m 100 -a 7 ./hashes/hash.txt ?a?a ./wordlist/hybrid_wordlist.txt -o ./outputFiles/hybrid_mask_wordlist_output_hybrid.txt
 
 # Execute hashcat with association attack
 # hashcat -m 100 -a 9 hash.txt ./wordlist/wordlist.txt -r rules.rules -o ./outputFiles/association_output.txt
