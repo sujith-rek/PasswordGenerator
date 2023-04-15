@@ -94,9 +94,34 @@ We can also give a rules file which contains rules that can be used to modify th
 
 This attack is by far less effective than the other attacks because the words in the wordlist should exactly match the words in the password else the password will not be cracked
 
-But if we rules file and some hybrid wordlists which are modified and added masks, we can increase the success rate of the attack
+But if we use the rules file and some hybrid wordlists which are modified and added masks, we can increase the success rate of the attack
 
 ### **Combination mode**
 Combination mode takes hashes as input and tries to crack them using two wordlists
 
 It simply append the words from the two wordlists and tries to crack the hashes
+
+This attack is also less effective than the other attacks because the words in the wordlist should exactly match the words in the password else the password will not be cracked
+
+### **Brute force mode**
+Brute force mode takes hashes as input and tries to crack them using a charset
+
+It simply generates all the possible combinations of the charset and tries to crack the hashes
+
+Simply Exhaustive search
+
+Once the wordspace reaches a certain limit, the attack becomes very slow. Hashcat won't process over 10-12 characters with all charset **?a**
+
+If the keyspace is a little less, hashcat will process the keyspace and we might crack all the hashes
+
+### **Hybrid mode**
+Hybrid mode takes hashes as input and tries to crack them using a wordlist and a mask
+
+It appends words from wordlist with the mask and tries to crack the hashes
+
+Hybrid mode **6** appends words from wordlist with the mask and tries to crack the hashes
+
+Hybrid mode **7** prepends words from wordlist with the mask and tries to crack the hashes
+
+We can say this is a mix of comination mode, instead of appending words from two wordlists, we append words from a wordlist with a mask
+
