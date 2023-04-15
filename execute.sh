@@ -15,15 +15,23 @@ python ./programs/password.py
 python ./programs/generate_password.py
 
 # Execute hashcat with straight attack
-# possibilty of breaking hashes is less
-# Because we are modifying the wordlist words
-hashcat -m 100 -a 0 hash.txt ./wordlist/wordlist.txt -o ./outputFiles/straight_output.txt
+# with normal wordlist
+hashcat -m 100 -a 0 ./hashes/hash.txt ./wordlist/wordlist.txt -o ./outputFiles/straight_output.txt
 
 # Execute hashcat with combination attack
-hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/wordlist.txt -o ./outputFiles/combination_output.txt
+# with normal wordlist and mask
+hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/wordlist.txt ./wordlist/mask.txt -o ./outputFiles/combination_output.txt
+# with hybrid wordlist + mask
+# hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/hybrid_wordlist.txt ./wordlist/mask.txt -o ./outputFiles/combination_output.txt
+
 
 # execute hashcat with brute force attack 
-hashcat -m 100 -a 3 ./hashes/hash.txt ?u?a?a?a?a?a?a?a?a?a?a?a?a?a --bitmap-max=32 -o ./outputFiles/bruteforce_output.txt
+# hashcat -m 100 -a 3 ./hashes/hash.txt ?u?a?a?a?a?a?a?a?a?a?a?a?a?a -o ./outputFiles/bruteforce_output.txt
+# due to the key space of brute force attack is too large, hashcat won't process
+# estimated passwords to check = 4 * 10^27 approx.
+# average hashrate = 10^9
+# estimated time to crack = 4 * 10^27 / 10^9 = 4 * 10^18 seconds = 7 * 10^12 years approx.
+
 
 # Execute hashcat with hybrid wordlist + mask attack
 hashcat -m 100 -a 6 ./hashes/hash.txt ./wordlist/wordlist.txt ?a?a -o ./outputFiles/hybrid_wordlist_mask_output.txt

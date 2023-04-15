@@ -1,9 +1,12 @@
+import string
+
 def main():
         f1 = open('/usr/share/wordlists/rockyou.txt', 'r')
         f2 = open('/usr/share/wordlists/john.lst', 'r')
         f3 = open('/usr/share/wordlists/nmap.lst', 'r')
         f4 = open('/usr/share/wordlists/wifite.txt', 'r')
-        f5 = open('../wordlist/wordlist.txt', 'w')
+        f5 = open('./wordlist/wordlist.txt', 'w')
+        f6 = open('./wordlist/mask.txt', 'w')
 
         #listL to store words
         listL = []
@@ -46,5 +49,24 @@ def main():
         f3.close()
         f4.close()
         f5.close()
+
+        # characterset
+        charSet = string.ascii_letters + string.digits + string.punctuation
+
+        #1 character mask
+        for i in range(len(charSet)):
+                f6.write(charSet[i] + '\n')
+        #2 character mask
+        for i in range(len(charSet)):
+                for j in range(len(charSet)):
+                        f6.write(charSet[i] + charSet[j] + '\n')
+        
+        #3 character mask
+        for i in range(len(charSet)):
+                for j in range(len(charSet)):
+                        for k in range(len(charSet)):
+                                f6.write(charSet[i] + charSet[j] + charSet[k] + '\n')
+
+        f6.close()
 
 main()
