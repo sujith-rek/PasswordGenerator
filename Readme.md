@@ -64,7 +64,9 @@ You can find all the commands that could be used in the file execute.sh
 Comment out the commands that you don't want to run (Only the hashcat commands, python commands need to be run)
 
 Open terminal from the root directory of this folder
-and run the following command
+and run the following command 
+
+**Linux**
 ```
 ./execute.sh
 ```
@@ -77,12 +79,26 @@ incase the python script doesn't run, run the following command
 ```
 chmod +x *.py
 ```
-
+**Windows**
+You need to enable scripts inorder to run this or you can run each command individually
+```
+./execute.ps1
+```
+Or you can execute the following
+```
+powershell -ExecutionPolicy ByPass -File ".\execute.ps1"
+```
 
 **Requirements**
 ------------
 - Python 3.*
 - hashcat
+
+To install hashcat in linux use
+```
+sudo apt-get install hashcat
+```
+For windows download it from official website
 
 
 **Observations**
