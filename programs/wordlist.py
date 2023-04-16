@@ -1,12 +1,15 @@
 import string
 
 def main():
+
+        # leave as it is to generate wordlist and mask
+
+        # code to generate wordlist
         f1 = open('/usr/share/wordlists/rockyou.txt', 'r')
         f2 = open('/usr/share/wordlists/john.lst', 'r')
         f3 = open('/usr/share/wordlists/nmap.lst', 'r')
         f4 = open('/usr/share/wordlists/wifite.txt', 'r')
         f5 = open('./wordlist/wordlist.txt', 'w')
-        f6 = open('./wordlist/mask.txt', 'w')
 
         #listL to store words
         listL = []
@@ -50,6 +53,8 @@ def main():
         f4.close()
         f5.close()
 
+        # comment out all code above to generate mask
+        f6 = open('./wordlist/mask.txt', 'w')
         # characterset
         charSet = string.ascii_letters + string.digits + string.punctuation
 

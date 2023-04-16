@@ -1,6 +1,8 @@
 #!/usr/bin/bash
 
-# Uncomment the following lines if you want to run the program for the first time
+# Author : Sujith
+
+# Uncomment the following lines if you are running the program for the first time
 # mkdir hashes
 # mkdir passwords
 # mkdir outputFiles
@@ -16,6 +18,8 @@
 # touch hybrid_mask_wordlist_output_hybrid.txt
 # cd ..
 
+# end execution of script file
+# exit 0
 
 # Execute the program password.py
 python ./programs/password.py
@@ -32,10 +36,17 @@ python ./programs/generate_password.py
 # which is stored in /home/<user>/.local/share/hashcat/hashcat.potfile
 
 
+# if mask.txt is not present or wordlist.txt, uncomment the following line
+# python ./programs/wordlist.py 
+
 
 # Execute hashcat with straight attack
 # with normal wordlist
 hashcat -m 100 -a 0 ./hashes/hash.txt ./wordlist/wordlist.txt -r rules.rules -o ./outputFiles/straight_output.txt
+# the above command is equivalent to the following command
+# hashcat -m 100 -a 0 ./hashes/hash.txt ./wordlist/hybrid_wordlist.txt -o ./outputFiles/straight_output.txt 
+# or
+# hashcat -m 100 -a 0 ./hashes/hash.txt ./wordlist/hybrid_wordlist.txt -r rules.rules -o ./outputFiles/straight_output.txt -O
 
 
 # Execute hashcat with combination attack
