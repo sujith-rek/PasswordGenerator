@@ -2,21 +2,31 @@
 
 # Author : Sujith
 
-# Uncomment the following lines if you are running the program for the first time
-# mkdir hashes
-# mkdir passwords
-# mkdir outputFiles
-# cd outputFiles
-# touch straight_output.txt
-# touch combination_output.txt
-# touch bruteforce_output.txt
-# touch hybrid_wordlist_mask_output.txt
-# touch hybrid_mask_wordlist_output.txt
-# touch association_output.txt
-# touch combination_output_hybrid.txt
-# touch hybrid_wordlist_mask_output_hybrid.txt
-# touch hybrid_mask_wordlist_output_hybrid.txt
-# cd ..
+if [ ! -d "./hashes" ]
+then 
+    mkdir hashes
+fi
+
+if [ ! -d "./passwords" ]
+then 
+    mkdir passwords
+fi
+
+if [ ! -d "./outputFiles" ]
+then 
+    mkdir outputFiles
+    cd outputFiles
+    touch straight_output.txt
+    touch combination_output.txt
+    touch bruteforce_output.txt
+    touch hybrid_wordlist_mask_output.txt
+    touch hybrid_mask_wordlist_output.txt
+    touch association_output.txt
+    touch combination_output_hybrid.txt
+    touch hybrid_wordlist_mask_output_hybrid.txt
+    touch hybrid_mask_wordlist_output_hybrid.txt
+    cd ..
+fi
 
 # end execution of script file
 # exit 0
@@ -51,7 +61,7 @@ hashcat -m 100 -a 0 ./hashes/hash.txt ./wordlist/wordlist.txt -r rules.rules -o 
 
 # Execute hashcat with combination attack
 # with normal wordlist and mask
-hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/wordlist.txt ./wordlist/mask.txt -w 3 -o ./outputFiles/combination_output.txt -O
+hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/wordlist.txt ./wordlist/mask.txt -w 4 -o ./outputFiles/combination_output.txt -O
 # with hybrid wordlist + mask
 # hashcat -m 100 -a 1 ./hashes/hash.txt ./wordlist/hybrid_wordlist.txt ./wordlist/mask.txt -o ./outputFiles/combination_output_hybrid.txt -O
 
