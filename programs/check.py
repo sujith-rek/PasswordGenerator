@@ -1,5 +1,6 @@
 def main():
 
+    f = open('./hashes/hash.txt','r')
     f1 = open('./outputFiles/association_output.txt','r')
     f2 = open('./outputFiles/straight_output.txt','r')
     f3 = open('./outputFiles/combination_output.txt','r')
@@ -10,7 +11,7 @@ def main():
     f8 = open('./outputFiles/hybrid_wordlist_mask_output_hybrid.txt','r')
     f9 = open('./outputFiles/hybrid_mask_wordlist_output_hybrid.txt','r')
 
-    hash_count = 100
+    hash_count = 0
     association_count = 0
     straight_count = 0
     combination_count = 0
@@ -22,6 +23,9 @@ def main():
     hybrid_mask_wordlist_hybrid_count = 0
 
     # calculate number of hashes in each file
+    for line in f:
+        if line != '':
+            hash_count += 1
     for line in f1:
         if line != '':
             association_count += 1
@@ -72,15 +76,16 @@ def main():
     hybrid_mask_wordlist_hybrid_percentage = hybrid_mask_wordlist_hybrid_count / hash_count
 
     # print results
-    print('Association: ' + str(association_percentage) + '%')
-    print('Straight: ' + str(straight_percentage) + '%')
-    print('Combination: ' + str(combination_percentage) + '%')
-    print('combination_hybrid: ' + str(combination_hybrid_percentage) + '%')
-    print('Bruteforce: ' + str(bruteforce_percentage) + '%')
-    print('Hybrid Wordlist Mask: ' + str(hybrid_wordlist_mask_percentage) + '%')
-    print('Hybrid Wordlist Mask Hybrid: ' + str(hybrid_wordlist_mask_hybrid_percentage) + '%')
-    print('Hybrid Mask Wordlist: ' + str(hybrid_mask_wordlist_percentage) + '%')
-    print('Hybrid Mask Wordlist Hybrid: ' + str(hybrid_mask_wordlist_hybrid_percentage) + '%')
+    print('\n===============================RESULTS===============================\n')
+    print('Association: ' + str(association_percentage*100) + '%')
+    print('Straight: ' + str(straight_percentage*100) + '%')
+    print('Combination: ' + str(combination_percentage*100 ) + '%')
+    print('Combination_hybrid: ' + str(combination_hybrid_percentage*100) + '%')
+    print('Bruteforce: ' + str(bruteforce_percentage*100) + '%')
+    print('Wordlist + Mask: ' + str(hybrid_wordlist_mask_percentage*100) + '%')
+    print('Hybrid Wordlist + Mask: ' + str(hybrid_wordlist_mask_hybrid_percentage*100) + '%')
+    print('Mask + Wordlist: ' + str(hybrid_mask_wordlist_percentage*100) + '%')
+    print('Mask + Hybrid Wordlist: ' + str(hybrid_mask_wordlist_hybrid_percentage*100) + '%')
 
 
 main()

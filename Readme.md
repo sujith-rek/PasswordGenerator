@@ -49,8 +49,9 @@ Password Generator
     - dictionary.txt: This file contains passwords and hashes stored as key value pairs
 - /outputFiles: Thisfolder contain files which will store cracked password which are generated with hashcat
 - /wordlist: This folder contains wordlists which will be used for password generation and cracking
-    - wordlist.txt: This file contains the wordlist which will be used for password generation
     - common_wordlist.txt: This file contains the wordlist which will be used for generating passwords
+    - wordlist.txt: This file contains the wordlist which will be used for cracking the hashes.
+    This is the same wordlist as common_wordlist.txt but with additional 25000 randomly generated passwords using the same algorithm
     - hybrid_wordlist.txt: This file contains the wordlist which will be used for cracking the hashes
 
 **How to run**
@@ -79,7 +80,7 @@ chmod +x *.py
 - Python 3.*
 - hashcat
 
-**Conclusions and Observations**
+**Observations**
 ----------------------------
 ### **Attack modes**
 - Straight mode: This mode is used to crack the hashes using a wordlist
@@ -125,3 +126,17 @@ Hybrid mode **7** prepends words from wordlist with the mask and tries to crack 
 
 We can say this is a mix of comination mode, instead of appending words from two wordlists, we append words from a wordlist with a mask
 
+**Conclusion**
+----------------
+
+|Mode Number| Attack mode | Success rate |
+|-----------|-------------|--------------|
+|0| Straight mode | 0.0% |
+|1| Combination mode(normal wordlist) | 0.0% |
+|1| Combination mode(hybrid wordlist) | 0.90% |
+|6| Wordlist + mask | 0.0% |
+|6| Hybrid wordlist + mask | 0.61% |
+|7| Mask + wordlist | 0.0% |
+|7| Mask + hybrid wordlist | 0.0% |
+
+You can see detailed results <a href='https://docs.google.com/document/d/1TQJsvLmkjIu2d4uzXtxorM4aBCyAWsi0UFutn3HiMYg/edit?usp=sharing' target='_blank'>here </a>
